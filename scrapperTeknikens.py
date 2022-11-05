@@ -29,8 +29,8 @@ class TeknikensScrapper:
         # Translate today's menu
         dayMenu = self.translateDay(dayMenu)
 
-        for dish in dayMenu:
-            print(dish)
+        # for dish in dayMenu:
+        #     print(dish)
 
         return dayMenu
 
