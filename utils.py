@@ -12,5 +12,9 @@ def translateSwedish(text, translator):
     return translation.text
 
 
+def getDateYYMMDD():
+    return datetime.today().strftime("%Y-%m-%d")
+
+
 if __name__ == "__main__":
     print(getWeekdayIndex())

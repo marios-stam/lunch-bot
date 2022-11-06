@@ -1,0 +1,24 @@
+
+            
+            <div ng-show=" dayMenu.weekDayMenuSetMenusLeft.length > 0 || dayMenu.weekDayMenuSetMenusRight > 0 || !dayMenu.isWeekend || dayMenu.Html" class="">
+                
+                <h5 class="fc-spinach menu-container-menu-content-week-day-title ng-binding">Måndag 2022-10-31</h5>
+                
+                <div>
+                    
+                    <div class="xs-12 sm-6 menu-container-menu-content-left">
+                        <!-- ngRepeat: setMenu in dayMenu.weekDayMenuSetMenusLeft -->
+                    </div>
+                    
+                    <div class="xs-12 sm-6 menu-container-menu-content-right">
+                        <!-- ngRepeat: setMenu in dayMenu.weekDayMenuSetMenusRight -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ngIf: dayMenu.Html --><div class="menu-container-menu-content-custom ng-binding ng-scope" ng-if="dayMenu.Html" ng-bind-html="dayMenu.Html | trusted_html"><p><strong>Gröna smaker -</strong> Pasta penne med persilja och vitlöksfräst svamp<br><strong>Klassiska smaker -</strong> Stekt falukorv med stuvade makaroner<br><strong>Snabbt och Gott -</strong> Panerad Alaskafilé med rödbetor, kapris och skirat smör samt potatis<br><strong>Soppa -</strong> Potatis och purjolökssoppa</p></div><!-- end ngIf: dayMenu.Html -->
+            
+            <div class="menu-container-menu-week-no-menu ng-hide" ng-show="dayMenu.SetMenus.length <= 0 &amp;&amp; !dayMenu.Html &amp;&amp; !dayMenu.isWeekend">
+                Meny ej tillgänglig
+            </div>
+        

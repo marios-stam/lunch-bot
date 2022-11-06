@@ -1,4 +1,4 @@
-from scrapperTeknikens import TeknikensScrapper
+from scrappers.scrapperTeknikens import TeknikensScrapper
 
 
 def scrapeRestaurants():
