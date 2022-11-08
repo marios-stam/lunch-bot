@@ -17,13 +17,13 @@ class TeknikensScrapper:
         self.url = "https://www.teknikenshus.se/restaurang"
 
     def scrape(self):
-        # self.getWeekText()
-        self.weekText = loadWeekText()
+        self.getWeekText()
+        # self.weekText = loadWeekText()
         self.splitWeekText()
 
         # Select today's menu
         currentDay = utils.getWeekdayIndex()
-        currentDay = 3  # for testing
+        # currentDay = 3  # for testing
         dayMenu = self.selectDay(currentDay)
 
         # Translate today's menu
@@ -118,4 +118,7 @@ def loadWeekText():
 if __name__ == "__main__":
     teknikens = TeknikensScrapper()
 
-    teknikens.scrape()
+    menu = teknikens.scrape()
+
+    for dish in menu:
+        print(dish)

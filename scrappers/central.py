@@ -19,14 +19,11 @@ class CentralScrapper:
     def scrape(self):
         date = utils.getDateYYMMDD()
         print(date)
-        date = "2022-11-04"
+        date = "2022-11-08"
 
         self.getDayText(date)
         self.splitDay()
         self.day = self.translateDay(self.day)
-
-        for dish in self.day:
-            print(dish)
 
         return self.day
 
