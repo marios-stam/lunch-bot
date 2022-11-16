@@ -1,6 +1,6 @@
 from scrappers.teknikens import TeknikensScrapper
 from scrappers.central import CentralScrapper
-from scrappers import utils
+import scrappers.utils as utils
 
 
 def scrapeRestaurants():
@@ -11,17 +11,32 @@ def scrapeRestaurants():
     centralMenu = central.scrape()
 
     menus = {}
-    menus["teknikens"] = teknikenMenu
-    menus["central"] = centralMenu
+    menus["Teknikens"] = teknikenMenu
+    menus["Central"] = centralMenu
 
     return menus
 
 
-if __name__ == "__main__":
+def createMenusMessage():
     menus = scrapeRestaurants()
 
-    print("Teknikens:")
-    utils.printMenu(menus["teknikens"])
+    message = "LTU restaurants menu for today:\n\n"
+    for restaurant, menu in menus.items():
+        message += "======== "+restaurant+" ========" + "\n"
+        for dish in menu:
+            message += dish + "\n \n"
+        message += "\n"
 
-    print("Central":)
-    utils.printMenu(menus["central"])
+    print(message)
+    return message
+
+
+if __name__ == "__main__":
+    # menus = scrapeRestaurants()
+
+    # print("Teknikens:")
+    # utils.printMenu(menus["teknikens"])
+
+    # print("Central":)
+    # utils.printMenu(menus["central"])
+    createMenusMessage()

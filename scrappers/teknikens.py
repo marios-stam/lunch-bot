@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from googletrans import Translator
-import utils
+import scrappers.utils as utils
 # from google_trans_new import google_translator
 
 

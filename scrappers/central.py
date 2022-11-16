@@ -7,7 +7,9 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from googletrans import Translator
-import utils
+# import utils
+import scrappers.utils as utils
+
 # from google_trans_new import google_translator
 
 
@@ -19,7 +21,7 @@ class CentralScrapper:
     def scrape(self):
         date = utils.getDateYYMMDD()
         print(date)
-        date = "2022-11-08"
+        # date = "2022-11-08"
 
         self.getDayText(date)
         self.splitDay()
@@ -44,7 +46,7 @@ class CentralScrapper:
         url = "https://www.foodandco.se/restauranger/restauranger/centrumrestaurangen/"
 
         driver.get(url)
-        time.sleep(10)
+        time.sleep(15)
 
         # content = driver.find_element(By.CSS_SELECTOR, "div[class*='ItemsGridWithPostAtcRecommendations'")
         # breads = content.find_elements(By.TAG_NAME, "li")
