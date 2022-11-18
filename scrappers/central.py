@@ -8,8 +8,11 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from googletrans import Translator
 # import utils
-import scrappers.utils as utils
 
+try:
+    import scrappers.utils as utils
+except:
+    import utils
 # from google_trans_new import google_translator
 
 
@@ -24,7 +27,12 @@ class CentralScrapper:
         # date = "2022-11-08"
 
         self.getDayText(date)
+        print(self.dayText)
         self.splitDay()
+        # self.splitDayStrong()
+        # self.splitDayText()
+
+        print(self.day)
         self.day = self.translateDay(self.day)
 
         return self.day
@@ -52,11 +60,14 @@ class CentralScrapper:
         # breads = content.find_elements(By.TAG_NAME, "li")
 
         day = driver.find_elements(By.ID, date)
-        day = day[0].get_attribute("innerHTML")
+
+        self.dayInnerHtml = day[0].get_attribute("innerHTML")
+        day = day[0].get_attribute("innerText")
 
         self.dayText = day
 
-    def splitDay(self):
+    def splitDayStrong(self):
+        """Split day based on <strong> tag"""
         day = self.dayText.split("<strong>")[1:]
         for i, dish in enumerate(day):
             # dish = dish.split("</strong>")[0]
@@ -64,6 +75,20 @@ class CentralScrapper:
             day[i] = dish
 
         self.day = day
+
+    def splitDay(self):
+        """Split day based on <p> tag"""
+        day = self.dayInnerHtml.split("<p>")[1].split("</p>")[0]
+        day = day.split("<br>")
+
+        self.day = day
+
+    def splitDayText(self):
+        day = self.dayText
+        day = day.strip().splitlines()
+        # remove all white space lines
+        day = [dish for dish in day if not dish.isspace()]
+        print(day)
 
     def translateDay(self, day, translator=None):
         # translate swedish to english
@@ -98,4 +123,5 @@ def loadDayText():
 if __name__ == "__main__":
 
     central = CentralScrapper()
-    central.scrape()
+    day = central.scrape()
+    print(day)

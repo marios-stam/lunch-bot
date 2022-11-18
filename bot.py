@@ -15,10 +15,11 @@ updater = Updater(botToken, use_context=True)
 
 def start(update, context):
     print("Start called")
-    # context.job_queue.run_daily(msg,
-    # datetime.time(hour=11, minute=0, tzinfo=pytz.timezone('Europe/Stockholm')),
-    # days=(0, 1, 2, 3, 4, 5, 6), context=update.message.chat_id)
-    context.job_queue.run_repeating(msg_spam, interval=60)
+    context.job_queue.run_daily(msg_spam,
+                                datetime.time(hour=17, minute=20, tzinfo=pytz.timezone('Europe/Stockholm')),
+                                days=(0, 1, 2, 3, 4, 5, 6))
+
+    # context.job_queue.run_repeating(msg_spam, interval=60)
     context.bot.send_message(chat_id=update.message.chat_id, text='Service started!')
 
 
